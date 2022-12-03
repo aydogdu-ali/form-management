@@ -10,7 +10,7 @@ const Register = () => {
         <Container   className={RegisterStyle["register"]}> 
            <Form>
            <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Adınız:</Form.Label>
+        <Form.Label className={RegisterStyle["info"]}>Adınız:</Form.Label>
         <Form.Control type="text" placeholder="Adınız" required />
         
       </Form.Group>
@@ -24,7 +24,8 @@ const Register = () => {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Telefon Numaranız:</Form.Label>
-        <Form.Control type="tel" placeholder="Telefon Numaranız" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2} [0-9]{2}" required/>
+        <Form.Control type="tel" placeholder="Telefon Numaranız 505-123-11-11 formatında" 
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">

@@ -1,0 +1,12 @@
+.register{
+
+       box-shadow: rgba(155, 158, 161, 0.48) 6px 2px 16px 0px, rgba(89, 75, 75, 0.8) -6px -2px 16px 0px;
+       max-width: 700px;
+       padding: 1.2rem;
+   
+
+}
+
+label{
+    color:red;
+}

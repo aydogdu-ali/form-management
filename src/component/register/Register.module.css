@@ -1,9 +1,11 @@
 .register{
 
        box-shadow: rgba(155, 158, 161, 0.48) 6px 2px 16px 0px, rgba(89, 75, 75, 0.8) -6px -2px 16px 0px;
-       max-width: 600px;
+       max-width: 500px;
+       margin: auto;
        padding: 1.2rem;
        margin-top: 1rem;
+       display: flex;
    
 
 }

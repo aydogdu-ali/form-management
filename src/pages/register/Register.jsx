@@ -3,18 +3,30 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import RegisterStyle from "./register.module.css"
+
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Register = () => {
+
+const navigate = useNavigate()
+
   const succsess = () => toast.success(" Aramıza Hoşgeldin!", {
-    position: "top-center",
-    autoClose: 1500,
+    autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",
+});
+    
   
-    });;
+   
 
   const [formValue, setFormValue] = useState({
     firstName:"",
@@ -28,21 +40,24 @@ const Register = () => {
 
   const {firstName,lastName,tel, city, email,password} = formValue
 
-  const handleSubmit =(e)=>{
+  const handleSubmit =  (e)=>{
     e.preventDefault()
-    succsess()
-    setFormValue({
+     succsess()
+     navigate("/Üyeler")
+      setFormValue({
       firstName:"",
       lastName:"",
       tel:"",
       city:"",
       email:"",
       password:"",
- 
+      
     })
+  
     console.log(formValue)
+    
   }
-
+  
 
   const handleChange =(e)=>{
     console.log(e.target.value)
@@ -50,9 +65,16 @@ const Register = () => {
   }
 
   return (
+    <>
+    
+
+    <h1 className=' text-center text-danger fs-bond'>Üyelik Formu</h1>
+
+   
     <div className={RegisterStyle["register"]}> 
+ 
         <Container > 
-           <Form onSubmit={handleSubmit}>
+           <Form onSubmit={handleSubmit }>
            <Form.Group className="mb-3" >
         <Form.Label className={RegisterStyle["info"]}>Adınız: <span className='text-dark'>{firstName.toLocaleUpperCase()}</span></Form.Label>
         <Form.Control type="text" placeholder="Adınız" required
@@ -75,7 +97,7 @@ const Register = () => {
       <Form.Group className="mb-3" >
         <Form.Label className={RegisterStyle["info"]}>Telefon Numaranız:<span className='text-dark'>{tel.includes()}</span></Form.Label>
         <Form.Control type="tel" placeholder="Telefon Numaranız 505-123-11-11 formatında" 
-        pattern="{[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2} " maxLength="10"required
+        pattern="/{[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}/ " maxLength="10"required
       
         id = "tel"
         value = {tel} 
@@ -109,14 +131,14 @@ const Register = () => {
       </Form.Group>
       
       
-      <Button variant="outline-primary"  className="w-100 mt-3 mb-3"  type="submit">
+      <Button variant="outline-primary"  className="w-100 mt-3 mb-3"  type="submit" >
         Onay
       </Button>
     </Form>
     </Container>
     <ToastContainer/>
     </div>
-
+    </>
     
       );
     }

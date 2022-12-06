@@ -46,7 +46,7 @@ const Register = () => {
       password: "",
     });
 
-    setTimeout((handleSubmit) => navigate("/Üyeler"), 3000);
+    setTimeout((handleSubmit) => navigate("/ekip"), 3000);
     console.log(formValue);
   };
 
@@ -99,13 +99,13 @@ const Register = () => {
             <Form.Group className="mb-3">
               <Form.Label className={RegisterStyle["info"]}>
                 Telefon Numaranız:
-                <span className="text-dark">{tel.includes()}</span>
+                <span className="text-dark">{tel}</span>
               </Form.Label>
               <Form.Control
                 type="tel"
                 placeholder="Telefon Numaranız 505-123-11-11 formatında"
                 pattern="/{[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}/ "
-                maxLength="10"
+                maxLength="13"
                 required
                 id="tel"
                 value={tel}

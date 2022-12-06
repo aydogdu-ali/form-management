@@ -42,7 +42,7 @@ const Login = () => {
       password: "",
     });
 
-    setTimeout((handleSubmit) => navigate("/Üyeler"), 3000);
+    setTimeout((handleSubmit) => navigate("/ekip"), 3000);
     console.log(formValue);
   };
 

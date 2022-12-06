@@ -4,22 +4,25 @@ import Navbar from "./component/navbar/Navbar.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/register/Register.jsx";
 import PrivateRouter from "./component/PrivateRouter";
-import Uyeler from "./pages/üye/Uyeler.jsx";
+import Ekip from "./pages/üye/Ekip.jsx";
 import { Route, Routes } from "react-router-dom";
+import LoginProvider from "./context/LoginContext";
 
 function App() {
   return (
     <div>
+      <LoginProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/Üyeler" element={<PrivateRouter />}>
-          <Route path="" element={<Uyeler />} />
+        <Route path="/ekip" element={<PrivateRouter />}>
+          <Route path="" element={<Ekip />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
+      </LoginProvider>
     </div>
   );
 }

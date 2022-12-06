@@ -1,24 +1,22 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
+import NavbarStyle from "./navbar.module.css"
 
 const Navbar1 = () => {
   return (
-    <Navbar className ="text-danger" >
-      <Container>
-        <Navbar.Brand href="/">AnaSayfa</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto d-flex justify-content-between">
-            <Link to ="/Login">Login</Link>
-            <Link to ="/Üyeler">Üyeler</Link>
-            
-            </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <Nav className="justify-content-center mt-3" activeKey="/">
+    <Nav.Item className={NavbarStyle['nav-item']}>
+      <Link className={NavbarStyle['nav-item-link']} to="/">Anasayfa</Link>
+    </Nav.Item>
+    <Nav.Item className={NavbarStyle['nav-item']}>
+      <Link className={NavbarStyle['nav-item-link']} to="/login">Login</Link>
+    </Nav.Item>
+    <Nav.Item className={NavbarStyle['nav-item']}>
+      <Link className={NavbarStyle['nav-item-link']} to="/üyeler">Üyeler</Link>
+    </Nav.Item>
+    
+  </Nav>
   )
 }
 

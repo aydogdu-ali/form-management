@@ -4,15 +4,17 @@ import Navbar from "./component/navbar/Navbar.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/register/Register.jsx";
 import PrivateRouter from "./component/PrivateRouter";
-import Ekip from "./pages/üye/Ekip.jsx";
+import Ekip from "./pages/üye/Ekip"
 import { Route, Routes } from "react-router-dom";
-import LoginProvider from "./context/LoginContext";
+import LoginProvider from "./contex/LoginContex.jsx";
+
 
 function App() {
   return (
     <div>
       <LoginProvider>
       <Navbar />
+     
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/register" element={<Register />} />

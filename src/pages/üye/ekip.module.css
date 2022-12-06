@@ -1,0 +1,19 @@
+.ekip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1;
+  margin-top: 1rem;
+}
+
+.Image {
+  cursor: pointer;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+}
+
+.Image:hover {
+  margin-top: 0.5rem;
+  transform: scale(1.2);
+}

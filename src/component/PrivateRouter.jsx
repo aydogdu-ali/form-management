@@ -1,19 +1,19 @@
 
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { LoginContext } from "../context/LoginContext";
+import  {LoginContext}  from "../contex/LoginContex"
 
-const Private = () => {
+const PrivateRouter = () => {
   const { user } = useContext(LoginContext);
 
   return (
     <div> <div>
-    {user.email && user.password ? <Outlet /> : <Navigate to="/login" />}
+    {user.email && user.password ? <Outlet /> : <Navigate to="/register" />}
   </div></div>
   )
 }
 
-export default Private
+export default PrivateRouter
 
 
 

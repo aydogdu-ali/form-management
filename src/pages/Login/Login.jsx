@@ -3,13 +3,14 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import LoginStyle from "./login.module.css"
-
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LoginContext } from "../../contex/LoginContex";
 
 const Login = () => {
+  const { user, setUser } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const succsess = () =>
@@ -22,34 +23,18 @@ const Login = () => {
       theme: "light",
     });
 
-  const [formValue, setFormValue] = useState({
-       email: "",
-    password: "",
-  });
-
-  const { email, password } = formValue;
+ 
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     succsess();
-
-    setFormValue({
-      firstName: "",
-      lastName: "",
-      tel: "",
-      city: "",
-      email: "",
-      password: "",
-    });
-
-    setTimeout((handleSubmit) => navigate("/ekip"), 3000);
-    console.log(formValue);
+        setTimeout((handleSubmit) => navigate("/ekip"), 3000);
+       
+  
   };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setFormValue({ ...formValue, [e.target.id]: e.target.value });
-  };
+
 
   return (
     <>
@@ -68,8 +53,8 @@ const Login = () => {
                 placeholder="Enter email"
                 required
                 id="email"
-                value={email}
-                onChange={handleChange}
+                value={user?.email || ""}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
             </Form.Group>
 
@@ -82,8 +67,8 @@ const Login = () => {
                 placeholder="Password"
                 required
                 id="password"
-                value={password}
-                onChange={handleChange}
+                value={user?.password || ""}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </Form.Group>
 

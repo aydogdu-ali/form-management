@@ -36,7 +36,6 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     succsess();
-
     setFormValue({
       firstName: "",
       lastName: "",

@@ -5,10 +5,13 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import EkipStyle from "./ekip.module.css"
 
+
+// Api'den gelen veriyi tutacağım stateyi tanımlıyorum.
 const Ekip = () => {
   const [ekip, setEkip] = useState([]);
 
 
+  // Api'den veri çekmek için fonksiyon tanımlıyorum.
   const getUsers = () => {
     fetch("https://reqres.in/api/users")
     .then((res) => res.json())
@@ -17,9 +20,10 @@ const Ekip = () => {
      
   };
 
-  console.log(ekip)
+  // console.log(ekip)
 
 
+  // Gelen verinin sayfa render olduğunda çalışması için useEffect Hookunu kullanıyorum.
   useEffect(() => {
     getUsers();
   }, []);
@@ -33,6 +37,7 @@ const Ekip = () => {
     <div className={EkipStyle["ekip"]}>
       
       {ekip.map((ekip,id)=> {
+        /*Api 'den gelen datanın içindeki veriyi açıyorum Kullanıcıya göstermek için map metodu ile DOM'da gösteriyorum*/
          const { first_name, last_name, email, avatar } = ekip;
         return ( <Col
           key={id}

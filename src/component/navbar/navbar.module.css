@@ -1,14 +1,12 @@
-.nav-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 5rem;
-   margin-left: 3rem;
-   font-size: 1.7rem;
-
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  margin-left: 3rem;
+  font-size: 1.7rem;
 }
 
-.nav-item-link{
-    text-decoration: none;
+.nav-item-link {
+  text-decoration: none;
 }
-

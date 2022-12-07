@@ -6,14 +6,19 @@ import RegisterStyle from "./register.module.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// react-toastify kütüphanesinden kullanıcıya bilgi mesajı vermek için kullandım"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
 const Register = () => {
-  
+
+
+  // navigate hookunu kullanıcı kayıt olduğunda ekip sayfasına yönlendirilmesi için kullandım.
   const navigate = useNavigate();
 
+  // toastify kütüphanesinden aldığım başarılı girişi için yazdığım paramaetrelere göre çalışan fonksiyon
   const succsess = () =>
     toast.success(" Aramıza Hoşgeldin!", {
       position: "top-center",
@@ -24,6 +29,9 @@ const Register = () => {
       theme: "light",
     });
 
+
+    // Contex Api de tanımladığın kullanıcı bilgilerini kullanıcıdan aldığınız inputlarla tek bir statede topluyorum.
+    // Bu çalışmada Contex Api simule edilmiştir.  
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -35,9 +43,12 @@ const Register = () => {
 
   const { firstName, lastName, tel, city, email, password } = user;
 
+
+  // Kullanıcı bilgilerini girdikten sonra butonu "onay" verdiğinde çalışacak fonksiyonu tanımladım.
+  // success() fonksiyonu ile toastify mesajı ekrana gelecek. setUser ile inputların içi boşalmış olacak. 
+  //setTimeout fonksiyonu ile toastifay mesajı kaybolduktan sonra kullanıcıyı "ekip" sayfasına yönlendirmiş oluyorum
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setLogin(true) 
       succsess();
       setUser({
         firstName: "",
@@ -52,6 +63,7 @@ const Register = () => {
     
   };
 
+  // kullanıcının her bir inputa veri girdiğinde girdiği verileri user objesine atmasını sağlıyorum.
   const handleChange = (e) => {
     console.log(e.target.value);
     setUser({ ...user, [e.target.id]: e.target.value });
@@ -66,7 +78,8 @@ const Register = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label className={RegisterStyle["info"]}>
-                Adınız:{" "}
+                Adınız:
+                {/*Kullanıcının girdiği her bir verinin ekranda kendisine gösterilmesini sağlıyorum*/}
                 <span className="text-dark">
                   {firstName.toLocaleUpperCase()}
                 </span>

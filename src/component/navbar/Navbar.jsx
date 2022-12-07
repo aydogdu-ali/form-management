@@ -33,7 +33,7 @@ const Navbar1 = () => {
       (
         <Nav.Item className={NavbarStyle["nav-item"]}>
           <Link
-            className={NavbarStyle["nav-item-link"]}
+            className={NavbarStyle["nav-item-link"] }
             to="/login"
             onClick={handleClick}
           >

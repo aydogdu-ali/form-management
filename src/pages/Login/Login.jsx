@@ -10,9 +10,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { LoginContext } from "../../contex/LoginContex";
 
 const Login = () => {
-  const { user, setUser,setLogin } = useContext(LoginContext);
+  // ContexApi'de tanımladığımız global değişkenleri ilgili olanları burada tüketmek için çağırıyorum
+  const { user, setUser, setLogin } = useContext(LoginContext);
+
+  // Kullanıcı login olduğunda ekip sayfasına gitmesi için navigate Hookunu kullanıyorum.
   const navigate = useNavigate();
 
+  // Kullanıcya başarılı giriş yaptığına dair toastify mesajının fonksiyonunu tanımlıyorum.
   const succsess = () =>
     toast.success(" Hoşgeldin!", {
       position: "top-center",
@@ -23,24 +27,18 @@ const Login = () => {
       theme: "light",
     });
 
+  // Kullanıcı ilgili bilgilerini girdiğinde
+  // succsess() fonksiyonu ile mesaj veriyorum.
+  //setTimeout fonksiyonu ile toastifay mesajı kaybolduktan sonra kullanıcıyı "ekip" sayfasına yönlendirmiş oluyorum
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(user.email && user.password){
+    if (user.email && user.password) {
       succsess();
       setTimeout((handleSubmit) => navigate("/ekip"), 2000);
-      setLogin(true)
+      setLogin(true);
+    } else {
+      setLogin(false);
     }
-
-    else {
-      setLogin(false)
-    }
-
-    
-      
-   
-   
-    
-     
   };
 
   return (
@@ -58,6 +56,7 @@ const Login = () => {
                 required
                 id="email"
                 value={user?.email || ""}
+                /*Kullanıcının girdiği verileri setUser state ile yakalıyorum.*/
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
             </Form.Group>
@@ -70,21 +69,20 @@ const Login = () => {
                 required
                 id="password"
                 value={user?.password || ""}
+                /*Kullanıcının girdiği verileri setUser state ile yakalıyorum.*/
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </Form.Group>
-
-            
           </div>
         </Container>
         <Button
-              variant="danger"
-              className="w-100 mt-3 mb-3"
-              type="submit"
-              onClick = {handleSubmit}
-            >
-              Giriş
-            </Button>
+          variant="danger"
+          className="w-100 mt-3 mb-3"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Giriş
+        </Button>
         <ToastContainer />
       </div>
     </>

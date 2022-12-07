@@ -41,6 +41,10 @@ const Login = () => {
     }
   };
 
+  const handleClick = ()=>{
+    navigate("/register")
+  }
+
   return (
     <>
       <h1 className="text-center text-danger fs-bond mt-4">Üye Giriş Ekranı</h1>
@@ -73,6 +77,7 @@ const Login = () => {
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </Form.Group>
+           
           </div>
         </Container>
         <Button
@@ -85,6 +90,16 @@ const Login = () => {
         </Button>
         <ToastContainer />
       </div>
+      <div className=" text-center"> 
+      <Button
+          variant="success"
+          className="w-25 mt-3"
+          type="submit"
+          onClick={handleClick}
+        >
+          Ekibize Katılmak İçin Tıkla
+        </Button>
+        </div>
     </>
   );
 };

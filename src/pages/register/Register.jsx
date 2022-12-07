@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import RegisterStyle from "./register.module.css";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginContext } from "../../contex/LoginContex";
 
 // react-toastify kütüphanesinden kullanıcıya bilgi mesajı vermek için kullandım"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const Register = () => {
-
+  const { setLogin } = useContext(LoginContext);
 
   // navigate hookunu kullanıcı kayıt olduğunda ekip sayfasına yönlendirilmesi için kullandım.
   const navigate = useNavigate();
@@ -29,9 +28,8 @@ const Register = () => {
       theme: "light",
     });
 
-
-    // Contex Api de tanımladığın kullanıcı bilgilerini kullanıcıdan aldığınız inputlarla tek bir statede topluyorum.
-    // Bu çalışmada Contex Api simule edilmiştir.  
+  // Contex Api de tanımladığın kullanıcı bilgilerini kullanıcıdan aldığınız inputlarla tek bir statede topluyorum.
+  // Bu çalışmada Contex Api simule edilmiştir.
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -43,24 +41,25 @@ const Register = () => {
 
   const { firstName, lastName, tel, city, email, password } = user;
 
-
   // Kullanıcı bilgilerini girdikten sonra butonu "onay" verdiğinde çalışacak fonksiyonu tanımladım.
-  // success() fonksiyonu ile toastify mesajı ekrana gelecek. setUser ile inputların içi boşalmış olacak. 
-  //setTimeout fonksiyonu ile toastifay mesajı kaybolduktan sonra kullanıcıyı "ekip" sayfasına yönlendirmiş oluyorum
+  // success() fonksiyonu ile toastify mesajı ekrana gelecek. setUser ile inputların içi boşalmış olacak.
+  //setTimeout fonksiyonu ile toastifay mesajı kaybolduktan sonra kullanıcıyı "ekip" sayfasına yönlendirmiş oluyorum.
+
   const handleSubmit = (e) => {
     e.preventDefault();
-      succsess();
-      setUser({
-        firstName: "",
-        lastName: "",
-        tel: "",
-        city: "",
-        email: "",
-        password: "",
-      })
-      setTimeout((handleSubmit) => navigate("/ekip"), 3000);
-      console.log(user);
-    
+    setLogin(true);
+    succsess();
+    setUser({
+      firstName: "",
+      lastName: "",
+      tel: "",
+      city: "",
+      email: "",
+      password: "",
+    });
+
+    setTimeout((handleSubmit) => navigate("/ekip"), 2000);
+    console.log(user);
   };
 
   // kullanıcının her bir inputa veri girdiğinde girdiği verileri user objesine atmasını sağlıyorum.
@@ -79,7 +78,6 @@ const Register = () => {
             <Form.Group className="mb-3">
               <Form.Label className={RegisterStyle["info"]}>
                 Adınız:
-                {/*Kullanıcının girdiği her bir verinin ekranda kendisine gösterilmesini sağlıyorum*/}
                 <span className="text-dark">
                   {firstName.toLocaleUpperCase()}
                 </span>

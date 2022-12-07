@@ -6,10 +6,13 @@ import Image from "react-bootstrap/Image";
 import EkipStyle from "./ekip.module.css"
 
 
+
 // Api'den gelen veriyi tutacağım stateyi tanımlıyorum.
 const Ekip = () => {
   const [ekip, setEkip] = useState([]);
+  
 
+  
 
   // Api'den veri çekmek için fonksiyon tanımlıyorum.
   const getUsers = () => {
@@ -33,7 +36,8 @@ const Ekip = () => {
  
 
   return (
-    <Container className="text-center mt-5">
+
+ <Container className="text-center mt-5">
     <div className={EkipStyle["ekip"]}>
       
       {ekip.map((ekip,id)=> {
@@ -56,8 +60,11 @@ const Ekip = () => {
         </Col>)
       })}
       
+      
       </div>
+      <h3 className='"text-center text-danger mt-2'>Ekip Üyelerimiz Sana Hoşgeldin Bakışı Yapıyor:)</h3>
       </Container>
+    
   )
 }
 

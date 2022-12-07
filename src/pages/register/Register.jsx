@@ -9,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Register = () => {
+  
   const navigate = useNavigate();
 
   const succsess = () =>
@@ -22,7 +24,7 @@ const Register = () => {
       theme: "light",
     });
 
-  const [formValue, setFormValue] = useState({
+  const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     tel: "",
@@ -31,27 +33,28 @@ const Register = () => {
     password: "",
   });
 
-  const { firstName, lastName, tel, city, email, password } = formValue;
+  const { firstName, lastName, tel, city, email, password } = user;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    succsess();
-    setFormValue({
-      firstName: "",
-      lastName: "",
-      tel: "",
-      city: "",
-      email: "",
-      password: "",
-    });
-
-    setTimeout((handleSubmit) => navigate("/ekip"), 3000);
-    console.log(formValue);
+    // setLogin(true) 
+      succsess();
+      setUser({
+        firstName: "",
+        lastName: "",
+        tel: "",
+        city: "",
+        email: "",
+        password: "",
+      })
+      setTimeout((handleSubmit) => navigate("/ekip"), 3000);
+      console.log(user);
+    
   };
 
   const handleChange = (e) => {
     console.log(e.target.value);
-    setFormValue({ ...formValue, [e.target.id]: e.target.value });
+    setUser({ ...user, [e.target.id]: e.target.value });
   };
 
   return (
@@ -150,6 +153,7 @@ const Register = () => {
                 placeholder="Password"
                 required
                 id="password"
+                maxLength="8"
                 value={password}
                 onChange={handleChange}
               />

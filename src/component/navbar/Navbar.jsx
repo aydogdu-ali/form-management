@@ -82,7 +82,7 @@ const Navbar1 = () => {
           to="/ekip"
           onClick={handleEkip}
         >
-          Ekip
+          Ekibimiz
         </Link>
       </Nav.Item>
       <ToastContainer />

@@ -8,4 +8,4 @@
 
 Uygulamanın sonucunu aşağıdaki linke tıklayarak görebilirsiniz.
 
-https://aydogdu-ali.github.io/
+ https://aydogdu-ali.github.io/form-management/

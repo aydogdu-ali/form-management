@@ -24,6 +24,7 @@ function App() {
             <Route path="" element={<Ekip />} />
           </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Main />} />
         </Routes>
       </LoginProvider>
     </div>
